@@ -1,0 +1,98 @@
+.Header {
+  width: 100%;
+}
+
+.header-container {
+  background-color: rgba(105, 90, 205, 0.203);
+  width: 100%;
+  display: flex;
+  padding: 0.5rem 2.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-section {
+  font-size: 1.5rem;
+}
+.left-section:nth-child(1) {
+  color: rgba(15, 17, 19, 0.959);
+}
+
+form {
+  background-color: rgb(238, 242, 245);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 30%;
+  padding: 1rem;
+  border-radius: 10px;
+}
+input {
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  gap: 1.5rem;
+  font-size: 1.3rem;
+  color: rgba(15, 17, 19, 0.959);
+}
+ul li {
+    color: rgba(15, 17, 19, 0.959);
+  transition: all 3s ease-in;
+}
+ul li:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 386px) {
+    .header-container {
+    padding: 0.3rem;
+    }
+    .list1, .list2{
+        display: none;
+    }
+    .left-section {
+        font-size: 1rem;
+      }
+      form {
+      
+        width: 25%;
+        padding: 0.2rem;
+        border-radius: 10px;
+      }
+      input{
+        font-size: small;
+      }
+      ul{
+        font-size: 1rem;
+      }
+}
+
+@media screen and (max-width: 786px) {
+    .header-container {
+    padding: 0.6rem;
+    }
+    .list1, .list2{
+        display: none;
+    }
+    .left-section {
+        font-size: 1.2rem;
+      }
+      form {
+      
+        width: 25%;
+        padding: 0.7rem;
+        border-radius: 10px;
+      }
+      
+      ul{
+        font-size: 1.2rem;
+      }
+}
