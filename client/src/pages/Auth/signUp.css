@@ -52,6 +52,11 @@
   color: rgb(252, 68, 105);
 }
 
+.error-message{
+  margin-bottom: 1rem;
+  color: rgb(252, 73, 73);
+}
+
 @media screen and (max-width: 700px) {
     .sign-up-form {
         width: 90%;
