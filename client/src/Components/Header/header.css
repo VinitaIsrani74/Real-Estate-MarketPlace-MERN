@@ -1,4 +1,5 @@
 .Header {
+  position: absolute;
   width: 100%;
 }
 
@@ -18,7 +19,7 @@
   color: rgba(15, 17, 19, 0.959);
 }
 
-form {
+.header-form{
   background-color: rgb(238, 242, 245);
   display: flex;
   align-items: center;
@@ -27,7 +28,7 @@ form {
   padding: 1rem;
   border-radius: 10px;
 }
-input {
+.header-input{
   background-color: transparent;
   outline: none;
   border: none;
@@ -61,13 +62,13 @@ ul li:hover {
     .left-section {
         font-size: 1rem;
       }
-      form {
+      .header-form{
       
         width: 25%;
         padding: 0.2rem;
         border-radius: 10px;
       }
-      input{
+      .header-input{
         font-size: small;
       }
       ul{
@@ -85,9 +86,9 @@ ul li:hover {
     .left-section {
         font-size: 1.2rem;
       }
-      form {
+      .header-form{
       
-        width: 25%;
+        width: 30%;
         padding: 0.7rem;
         border-radius: 10px;
       }

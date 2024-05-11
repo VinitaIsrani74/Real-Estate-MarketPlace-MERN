@@ -12,8 +12,8 @@ const Header = () => {
                 <span>Pulse</span>
             </section>
             </Link>
-            <form >
-                <input type="text" placeholder='Search...' />
+            <form className='header-form'>
+                <input type="text" placeholder='Search...' className='header-input' />
                 <IoSearch style={{cursor: "pointer"}}/>
             </form>
             <ul>

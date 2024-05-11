@@ -1,11 +1,11 @@
-.sign-in-container {
+.sign-up-container {
   width: 100%;
   height: 100vh;
   background: url("../../assets/bg3.jpg") no-repeat center;
   background-size: cover;
 }
 
-.overlay-sign-in {
+.overlay-sign-up {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
@@ -17,7 +17,7 @@
   color: rgb(238, 242, 245);
 }
 
-.sign-in-form {
+.sign-up-form {
   height: fit-content;
   margin: 1rem;
   padding: 1rem;
@@ -27,7 +27,7 @@
   gap: 1rem;
 }
 
-.sign-in-input {
+.sign-up-input {
   background-color: rgb(219, 232, 241);
   padding: 1rem;
   border-radius: 10px;
@@ -35,7 +35,7 @@
   border: none;
 }
 
-.signin-btn {
+.signup-btn {
   padding: 1rem;
   border-radius: 10px;
   outline: none;
@@ -45,15 +45,16 @@
   cursor: pointer;
 }
 
-.sign-up-link-div {
+.sign-in-link-div {
   font-size: 1.1rem;
 }
-.sign-up-link {
+.sign-in-link {
   color: rgb(252, 68, 105);
 }
 
 @media screen and (max-width: 700px) {
-  .sign-in-form {
-    width: 90%;
-  }
+    .sign-up-form {
+        width: 90%;
+    }
+    
 }
