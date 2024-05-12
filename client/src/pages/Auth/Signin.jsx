@@ -7,8 +7,14 @@ const Signin = () => {
     <div className="overlay-sign-in">
       <h1>Sign In</h1>
       <form className='sign-in-form'>
-        <input type="text" placeholder='Username' className='sign-in-input'/>
-        
+
+        <input
+            type="email"
+            placeholder="Email"
+            className="sign-in-input"
+            id="email"
+            
+          />
         <input type="password" placeholder='Password' className='sign-in-input'/>
         <button className='signin-btn'>Sign In</button>
       </form>
