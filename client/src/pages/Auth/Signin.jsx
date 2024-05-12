@@ -44,7 +44,7 @@ const Signin = () => {
   return (
     <div className="sign-in-container">
       <div className="overlay-sign-in">
-        <h1>Sign Up</h1>
+        <h1>Sign In</h1>
         <form onSubmit={handleSubmit} className="sign-in-form">
          
           <input
