@@ -1,0 +1,17 @@
+.OAuth-btn{
+    padding: 1rem;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    background-color: rgba(226, 43, 80, 0.776);
+    font-size: larger;
+    text-transform: uppercase;
+    color: rgb(254, 253, 250);
+    cursor: pointer;
+    transition: 1s;
+    box-shadow: 1px 2px 4px rgb(11, 0, 0);
+}
+
+.OAuth-btn:hover{
+    background-color: rgb(226, 43, 80);
+}

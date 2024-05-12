@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 
 import { signInStart, signInSuccess, signInFailure } from "../../Redux/user/userSlice";
 import "./signin.css";
+import OAuth from "../../Components/OAuth/OAuth";
 const Signin = () => {
   const [formData, setFormData] = useState({});
   const {loading, error} = useSelector((state) => state.user)
@@ -61,9 +62,10 @@ const Signin = () => {
             id="password"
             onChange={handleChange}
           />
-          <button disabled={loading} className="signup-btn">
+          <button disabled={loading} className="signin-btn">
             {loading ? "Loading" : "Sign In"}
           </button>
+          <OAuth />
         </form>
         {error && <p className="error-message">{error}</p>}
         <div className="sign-up-link-div">

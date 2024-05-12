@@ -36,15 +36,21 @@
 }
 
 .signup-btn {
+  color: aliceblue;
   padding: 1rem;
   border-radius: 10px;
   outline: none;
   border: none;
-  background-color: rgb(226, 43, 80);
+  text-transform: uppercase;
+  box-shadow: 1px 3px 6px rgb(5, 0, 0);
+  background-color: rgba(142, 100, 107, 0.847);
   font-size: larger;
+  transition: 1s;
   cursor: pointer;
 }
-
+.signup-btn:hover{
+  background-color: rgb(142, 100, 107);
+}
 .sign-in-link-div {
   font-size: 1.1rem;
 }

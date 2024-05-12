@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./signUp.css";
+import OAuth from "../../Components/OAuth/OAuth";
 const SignUp = () => {
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(null);
@@ -69,6 +70,7 @@ const SignUp = () => {
           <button disabled={loading} className="signup-btn">
             {loading ? "Loading" : "Sign Up"}
           </button>
+          <OAuth />
         </form>
         {error && <p className="error-message">{error}</p>}
         <div className="sign-in-link-div">
