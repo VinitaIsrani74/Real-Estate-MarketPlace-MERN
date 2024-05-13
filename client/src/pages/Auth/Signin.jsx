@@ -71,7 +71,7 @@ const Signin = () => {
         <div className="sign-up-link-div">
           Dont have an account?
           <Link to="/sign-up" style={{ textDecoration: "none" }}>
-            <span className="sign-up-link">Sign Up</span>
+            <span className="sign-up-link"> Sign Up</span>
           </Link>
         </div>
         

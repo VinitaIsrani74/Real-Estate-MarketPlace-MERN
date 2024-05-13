@@ -74,7 +74,7 @@ const SignUp = () => {
         </form>
         {error && <p className="error-message">{error}</p>}
         <div className="sign-in-link-div">
-          Already have an account?{" "}
+          Already have an account? {" "}
           <Link to="/sign-in" style={{ textDecoration: "none" }}>
             <span className="sign-in-link">Sign In</span>
           </Link>

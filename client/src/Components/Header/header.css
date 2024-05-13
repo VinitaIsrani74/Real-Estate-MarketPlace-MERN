@@ -4,7 +4,7 @@
 }
 
 .header-container {
-  background-color: rgba(105, 90, 205, 0.203);
+  background-color: rgba(143, 101, 107, 0.212);
   width: 100%;
   display: flex;
   padding: 0.5rem 2.5rem;
@@ -50,6 +50,13 @@ ul li {
 ul li:hover {
   cursor: pointer;
   text-decoration: underline;
+}
+
+.avatar{
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 386px) {
