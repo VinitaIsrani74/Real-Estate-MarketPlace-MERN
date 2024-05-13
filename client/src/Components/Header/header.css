@@ -4,8 +4,10 @@
 }
 
 .header-container {
-  background-color: rgba(143, 101, 107, 0.212);
+  background-color: transparent;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.511);
   width: 100%;
+  
   display: flex;
   padding: 0.5rem 2.5rem;
   justify-content: space-between;
@@ -16,11 +18,11 @@
   font-size: 1.5rem;
 }
 .left-section:nth-child(1) {
-  color: rgba(15, 17, 19, 0.959);
+  color: rgb(7, 0, 2);
 }
 
 .header-form{
-  background-color: rgb(238, 242, 245);
+  background-color: rgba(187, 126, 136, 0.674);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,7 +35,10 @@
   outline: none;
   border: none;
 }
-
+.header-input::placeholder{
+  font-size: 1.1rem;
+  color: rgb(7, 0, 2);
+}
 ul {
   display: flex;
   align-items: center;
@@ -44,7 +49,7 @@ ul {
   color: rgba(15, 17, 19, 0.959);
 }
 ul li {
-    color: rgba(15, 17, 19, 0.959);
+    color: rgb(141, 14, 39);
   transition: all 3s ease-in;
 }
 ul li:hover {
