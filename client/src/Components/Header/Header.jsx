@@ -15,7 +15,7 @@ const Header = () => {
             </section>
             </Link>
             <form className='header-form'>
-                <input type="text" placeholder='Search...' className='header-input' />
+                <input type="text" placeholder='Search...' className='header-input' id='search'/>
                 <IoSearch style={{cursor: "pointer"}}/>
             </form>
             <ul>
