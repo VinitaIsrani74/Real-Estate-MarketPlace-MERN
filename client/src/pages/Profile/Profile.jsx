@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch} from "react-redux";
 import { useRef } from "react";
+import {Link} from 'react-router-dom'
 
 import {
   getDownloadURL,
@@ -183,6 +184,7 @@ dispatch(deleteUserSuccess())
             <button disabled={loading} className="profile-btn">
             {loading ? "Loading" : "Update"}
             </button>
+            <Link style={{ textDecoration: "none" }} to="/create-listing" className="listing-link">Create Listing</Link>
           </form>
           <div className="profile-actions">
             <div onClick={handleDeleteUser} className="delete-account">Delete Account</div>

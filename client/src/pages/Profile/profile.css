@@ -91,3 +91,19 @@
     color: green;
     font-size: 1.1rem;
   }
+  .listing-link{
+    color: aliceblue;
+    padding: 1rem;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    box-shadow: 1px 3px 6px rgb(5, 0, 0);
+    background-color: rgba(34, 140, 24, 0.847);
+    font-size: larger;
+    transition: 1s;
+    cursor: pointer;
+  }
