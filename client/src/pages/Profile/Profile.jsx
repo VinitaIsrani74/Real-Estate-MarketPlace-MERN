@@ -10,7 +10,7 @@ import {
 } from "firebase/storage";
 import "./profile.css";
 import { app } from "../../firebase";
-import { deleteUserFailure, deleteUserStart, deleteUserSuccess, updateUserFailure, updateUserStart, updateUserSuccess } from "../../Redux/user/userSlice";
+import { deleteUserFailure, deleteUserStart, deleteUserSuccess, signOutFailure, signOutStart, signOutSuccess, updateUserFailure, updateUserStart, updateUserSuccess } from "../../Redux/user/userSlice";
 const Profile = () => {
   const { currentUser , loading, error } = useSelector((state) => state.user);
   const fileRef = useRef(null);
@@ -103,6 +103,21 @@ dispatch(deleteUserSuccess())
     }
   }
 
+  const handleSignOut = async () =>{
+    try {
+      dispatch(signOutStart())
+      const res = await fetch("/api/auth/signout");
+      const data = await res.json()
+      if(data.success === false){
+        dispatch(signOutFailure(data.message))
+        return
+      }
+
+      dispatch(signOutSuccess(data))
+    } catch (error) {
+      dispatch(signOutFailure(error.message))
+    }
+  }
   return (
     <div className="profile-container">
       <div className="right-container">
@@ -171,7 +186,7 @@ dispatch(deleteUserSuccess())
           </form>
           <div className="profile-actions">
             <div onClick={handleDeleteUser} className="delete-account">Delete Account</div>
-            <div className="log-out-account">Log Out</div>
+            <div className="log-out-account" onClick={handleSignOut}>Log Out</div>
           </div>
           {error && <p className="error-message">{error}</p>}
           {updateSuccess && <p className="success-message">User is Updated Successfully</p>}
