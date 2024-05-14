@@ -86,3 +86,8 @@
   .profile-actions div{
     cursor: pointer;
   }
+
+  .success-message{
+    color: green;
+    font-size: 1.1rem;
+  }
