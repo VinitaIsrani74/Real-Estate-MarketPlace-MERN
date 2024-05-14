@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
 import { useRef } from "react";
+
 import {
   getDownloadURL,
   getStorage,
@@ -9,7 +10,7 @@ import {
 } from "firebase/storage";
 import "./profile.css";
 import { app } from "../../firebase";
-import { updateUserFailure, updateUserStart, updateUserSuccess } from "../../Redux/user/userSlice";
+import { deleteUserFailure, deleteUserStart, deleteUserSuccess, updateUserFailure, updateUserStart, updateUserSuccess } from "../../Redux/user/userSlice";
 const Profile = () => {
   const { currentUser , loading, error } = useSelector((state) => state.user);
   const fileRef = useRef(null);
@@ -19,6 +20,7 @@ const Profile = () => {
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const [formData, setFormData] = useState({});
   const dispatch = useDispatch()
+  
 console.log(formData);
   useEffect(() => {
     if (file) {
@@ -80,6 +82,26 @@ console.log(formData);
       }
     );
   };
+
+  const handleDeleteUser = async () =>{
+    try {
+      deleteUserStart()
+      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+        method: 'DELETE'
+      })
+const data = await res.json()
+if(data.success === false){
+  dispatch(deleteUserFailure(data.message))
+  return
+}
+
+dispatch(deleteUserSuccess())
+
+
+    } catch (error) {
+      dispatch(deleteUserFailure(error.message))
+    }
+  }
 
   return (
     <div className="profile-container">
@@ -148,7 +170,7 @@ console.log(formData);
             </button>
           </form>
           <div className="profile-actions">
-            <div className="delete-account">Delete Account</div>
+            <div onClick={handleDeleteUser} className="delete-account">Delete Account</div>
             <div className="log-out-account">Log Out</div>
           </div>
           {error && <p className="error-message">{error}</p>}
