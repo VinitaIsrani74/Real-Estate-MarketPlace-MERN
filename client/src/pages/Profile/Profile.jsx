@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useRef } from "react";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 import {
   getDownloadURL,
@@ -11,18 +11,30 @@ import {
 } from "firebase/storage";
 import "./profile.css";
 import { app } from "../../firebase";
-import { deleteUserFailure, deleteUserStart, deleteUserSuccess, signOutFailure, signOutStart, signOutSuccess, updateUserFailure, updateUserStart, updateUserSuccess } from "../../Redux/user/userSlice";
+import {
+  deleteUserFailure,
+  deleteUserStart,
+  deleteUserSuccess,
+  signOutFailure,
+  signOutStart,
+  signOutSuccess,
+  updateUserFailure,
+  updateUserStart,
+  updateUserSuccess,
+} from "../../Redux/user/userSlice";
 const Profile = () => {
-  const { currentUser , loading, error } = useSelector((state) => state.user);
+  const { currentUser, loading, error } = useSelector((state) => state.user);
   const fileRef = useRef(null);
   const [file, setFile] = useState(undefined);
   const [filePercentage, setFilePercentage] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(false);
+  const [showListingsError, setShowListingsError] = useState(false);
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const [formData, setFormData] = useState({});
-  const dispatch = useDispatch()
-  
-console.log(formData);
+  const [userListings, setUserListings] = useState([]);
+  const dispatch = useDispatch();
+
+  console.log(formData);
   useEffect(() => {
     if (file) {
       handleFileUpload(file);
@@ -38,9 +50,9 @@ console.log(formData);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
-      dispatch(updateUserStart())
+      dispatch(updateUserStart());
       const res = await fetch(`/api/user/update/${currentUser._id}`, {
         method: "POST",
         headers: {
@@ -50,14 +62,13 @@ console.log(formData);
       });
       const data = await res.json();
       if (data.success === false) {
-        dispatch(updateUserFailure(data.message))
+        dispatch(updateUserFailure(data.message));
         return;
       }
-      dispatch(updateUserSuccess(data))
-      setUpdateSuccess(true)
-
+      dispatch(updateUserSuccess(data));
+      setUpdateSuccess(true);
     } catch (error) {
-      dispatch(updateUserFailure(error.message))
+      dispatch(updateUserFailure(error.message));
     }
   };
 
@@ -84,40 +95,70 @@ console.log(formData);
     );
   };
 
-  const handleDeleteUser = async () =>{
+  const handleDeleteUser = async () => {
     try {
-      deleteUserStart()
+      deleteUserStart();
       const res = await fetch(`/api/user/delete/${currentUser._id}`, {
-        method: 'DELETE'
-      })
-const data = await res.json()
-if(data.success === false){
-  dispatch(deleteUserFailure(data.message))
-  return
-}
-
-dispatch(deleteUserSuccess())
-
-
-    } catch (error) {
-      dispatch(deleteUserFailure(error.message))
-    }
-  }
-
-  const handleSignOut = async () =>{
-    try {
-      dispatch(signOutStart())
-      const res = await fetch("/api/auth/signout");
-      const data = await res.json()
-      if(data.success === false){
-        dispatch(signOutFailure(data.message))
-        return
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(deleteUserFailure(data.message));
+        return;
       }
 
-      dispatch(signOutSuccess(data))
+      dispatch(deleteUserSuccess());
     } catch (error) {
-      dispatch(signOutFailure(error.message))
+      dispatch(deleteUserFailure(error.message));
     }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      dispatch(signOutStart());
+      const res = await fetch("/api/auth/signout");
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(signOutFailure(data.message));
+        return;
+      }
+
+      dispatch(signOutSuccess(data));
+    } catch (error) {
+      dispatch(signOutFailure(error.message));
+    }
+  };
+
+  const handleShowListings = async () => {
+    try {
+      setShowListingsError(false);
+      const res = await fetch(`/api/user/listings/${currentUser._id}`);
+      const data = await res.json();
+      console.log(data);
+      if (data.success === false) {
+        setShowListingsError(true);
+        return;
+      }
+      setUserListings(data);
+    } catch (error) {
+      setShowListingsError(true);
+    }
+  };
+
+  const handleListingDelete = async (listingId) =>{
+try {
+  const res = await fetch(`/api/listing/delete/${listingId}`,{
+    method: 'DELETE'
+  })
+  const data = await res.json()
+  if(data.success===false){
+    console.log(data.message);
+    return
+  }
+  setUserListings((prev) => prev.filter((listing) => listing._id !==listingId))
+} catch (error) {
+  console.log(error);
+}
   }
   return (
     <div className="profile-container">
@@ -131,23 +172,22 @@ dispatch(deleteUserSuccess())
                 className="profile-img"
                 onClick={() => fileRef.current.click()}
               />
-             
             </div>
             <p>
-                {fileUploadError ? (
-                  <span style={{ color: "red" }}>
-                    Error While Uploading the image (Image must be less than 2MB)
-                  </span>
-                ) : filePercentage > 0 && filePercentage < 100 ? (
-                  <span>{`Uploading ${filePercentage}`}</span>
-                ) : filePercentage === 100 ? (
-                  <span style={{ color: "green" }}>
-                    Image Successfully Uploaded
-                  </span>
-                ) : (
-                  ""
-                )}
-              </p>
+              {fileUploadError ? (
+                <span style={{ color: "red" }}>
+                  Error While Uploading the image (Image must be less than 2MB)
+                </span>
+              ) : filePercentage > 0 && filePercentage < 100 ? (
+                <span>{`Uploading ${filePercentage}`}</span>
+              ) : filePercentage === 100 ? (
+                <span style={{ color: "green" }}>
+                  Image Successfully Uploaded
+                </span>
+              ) : (
+                ""
+              )}
+            </p>
           </div>
           <form onSubmit={handleSubmit} className="profile-form">
             <input
@@ -182,17 +222,68 @@ dispatch(deleteUserSuccess())
               onChange={handleChange}
             />
             <button disabled={loading} className="profile-btn">
-            {loading ? "Loading" : "Update"}
+              {loading ? "Loading" : "Update"}
             </button>
-            <Link style={{ textDecoration: "none" }} to="/create-listing" className="listing-link">Create Listing</Link>
+            <Link
+              style={{ textDecoration: "none" }}
+              to="/create-listing"
+              className="listing-link"
+            >
+              Create Listing
+            </Link>
           </form>
           <div className="profile-actions">
-            <div onClick={handleDeleteUser} className="delete-account">Delete Account</div>
-            <div className="log-out-account" onClick={handleSignOut}>Log Out</div>
+            <div onClick={handleDeleteUser} className="delete-account">
+              Delete Account
+            </div>
+            <div className="log-out-account" onClick={handleSignOut}>
+              Log Out
+            </div>
           </div>
           {error && <p className="error-message">{error}</p>}
-          {updateSuccess && <p className="success-message">User is Updated Successfully</p>}
+          {updateSuccess && (
+            <p className="success-message">User is Updated Successfully</p>
+          )}
         </div>
+      </div>
+      <button onClick={handleShowListings} className="show-listing-btn">
+        Show Listings
+      </button>
+      {showListingsError && (
+        <p className="error-message">{showListingsError}</p>
+      )}
+      <div className="listing-container">
+        {userListings &&
+          userListings.length > 0 &&
+          userListings.map((listing) => (
+            <div key={listing._id} className="listing">
+              <Link
+                style={{ textDecoration: "none" }}
+                to={`/listing/${listing._id}`}
+                className="show-listing-link"
+              >
+                <img
+                  src={listing.imageUrls[0]}
+                  alt="listingcover"
+                  className="listing-img"
+                />
+              </Link>
+              <Link
+                style={{ textDecoration: "none" }}
+                to={`/listing/${listing._id}`}
+                className="show-listing-link"
+              >
+                <p>{listing.name}</p>
+              </Link>
+
+              <button onClick={() => handleListingDelete(listing._id)} className="list-delete-btn">
+                Delete
+              </button>
+              <button className="list-edit-btn">
+                Edit
+              </button>
+            </div>
+          ))}
       </div>
     </div>
   );

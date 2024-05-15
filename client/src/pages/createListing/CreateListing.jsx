@@ -150,7 +150,7 @@ const navigate = useNavigate()
       </div>
       <div className="listing-lower">
         <h1>Create Listing</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form-container">
           <div className="form-left">
             <input
               type="text"
@@ -316,8 +316,9 @@ const navigate = useNavigate()
                 {uploading ? "Uploading" : "Upload"}
               </button>
             </div>
-          </div>
-          <p>{imageUploadError && imageUploadError}</p>
+
+
+            <p>{imageUploadError && imageUploadError}</p>
           {formData.imageUrls.length > 0 &&
             formData.imageUrls.map((url, index) => (
               <div key={url}>
@@ -329,6 +330,8 @@ const navigate = useNavigate()
             ))}
           <button disabled={loading || uploading} className="create-listing-btn">{loading ? "Loading" : "Create Listing"}</button>
           {error && <p>{error}</p>}
+          </div>
+          
         </form>
       </div>
     </div>

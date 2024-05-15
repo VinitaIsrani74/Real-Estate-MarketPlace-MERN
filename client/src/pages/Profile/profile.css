@@ -1,7 +1,10 @@
 .profile-container {
     width: 100%;
-    height: 100vh;
+    height: fit-content;
+    min-height: 100vh;
+    gap: 2.5rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
       }
@@ -106,4 +109,15 @@
     font-size: larger;
     transition: 1s;
     cursor: pointer;
+  }
+.listing-img{
+  height: 16rem;
+  width: 16rem;
+}
+  .show-listing-btn{
+    background-color: transparent;
+    color: green;
+    border: none;
+    outline: none;
+cursor: pointer;
   }
