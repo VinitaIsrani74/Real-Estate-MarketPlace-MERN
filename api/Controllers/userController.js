@@ -1,3 +1,4 @@
+import listingModel from "../Models/listingModel.js";
 import userModel from "../Models/userModel.js";
 import { errorHandler } from "../utils/error.js";
 import bcryptjs from "bcryptjs";
@@ -38,6 +39,19 @@ export const deleteUser = async (req, res, next) => {
     await userModel.findByIdAndDelete(req.params.id);
     res.clearCookie("access_token")
     res.status(200).json("User Deleted Successfully")
+
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getUserListing = async (req, res, next) => {
+  if (req.user.id !== req.params.id)
+    return next(errorHandler(401, " You can only get your own listings"));
+
+  try {
+  const listings = await listingModel.find({userRef: req.params.id})
+  res.status(200).json(listings)
 
   } catch (error) {
     next(error);
