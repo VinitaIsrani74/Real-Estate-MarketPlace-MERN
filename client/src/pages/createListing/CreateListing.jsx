@@ -7,40 +7,56 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { app } from "../../firebase";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const CreateListing = () => {
   const [images, setImages] = useState([]);
   const [formData, setFormData] = useState({
     imageUrls: [],
+    name: "",
+    description: "",
+    address: "",
+    type: "rent",
+    bedrooms: 1,
+    bathrooms: 1,
+    regularPrice: 50,
+    discountPrice: 0,
+    offer: false,
+    parking: false,
+    furnished: false,
   });
   console.log(formData);
   const [imageUploadError, setImageUploadError] = useState(false);
   const [uploading, setUploading] = useState(false);
-
-
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+const {currentUser} = useSelector(state => state.user)
+const navigate = useNavigate()
   const handleImageSubmit = (e) => {
-    if (images.length > 0 && images.length + formData.imageUrls.length< 7) {
-      setUploading(true)
-      setImageUploadError(false)
+    if (images.length > 0 && images.length + formData.imageUrls.length < 7) {
+      setUploading(true);
+      setImageUploadError(false);
       const promises = [];
 
       for (let i = 0; i < images.length; i++) {
         promises.push(storeImage(images[i]));
       }
-      Promise.all(promises).then((urls) => {
-        setFormData({
-          ...formData,
-          imageUrls: formData.imageUrls.concat(urls),
+      Promise.all(promises)
+        .then((urls) => {
+          setFormData({
+            ...formData,
+            imageUrls: formData.imageUrls.concat(urls),
+          });
+          setImageUploadError(false);
+          setUploading(false);
+        })
+        .catch((err) => {
+          setImageUploadError("Image upload failed (2 mb max per image)");
+          setUploading(false);
         });
-        setImageUploadError(false)
-        setUploading(false)
-      }).catch((err) =>{
-        setImageUploadError('Image upload failed (2 mb max per image)')
-        setUploading(false)
-      })
-    }
-    else{
-      setImageUploadError("You can only upload 6 images per listing")
-      setUploading(false)
+    } else {
+      setImageUploadError("You can only upload 6 images per listing");
+      setUploading(false);
     }
   };
 
@@ -69,11 +85,63 @@ const CreateListing = () => {
     });
   };
 
-  const handleRemoveImage = (index) =>{
-setFormData({
-  ...formData ,
-  imageUrls: formData.imageUrls.filter((_, i) => i !== index)
-})
+  const handleRemoveImage = (index) => {
+    setFormData({
+      ...formData,
+      imageUrls: formData.imageUrls.filter((_, i) => i !== index),
+    });
+  };
+
+  const handleChange = (e) => {
+    if (e.target.id === "sale" || e.target.id === "rent") {
+      setFormData({
+        ...formData,
+        type: e.target.id,
+      });
+    }
+
+    if(e.target.id === 'parking' || e.target.id === "furnished" || e.target.id === "offer"){
+      setFormData({
+        ...formData,
+        [e.target.id]: e.target.checked
+      })
+    }
+
+    if(e.target.type === 'number' || e.target.type === 'text' || e.target.type === 'textarea'){
+      setFormData({
+        ...formData,
+        [e.target.id]: e.target.value
+      });
+    }
+  };
+
+  const handleSubmit =async (e) =>{
+    e.preventDefault();
+    try {
+      if(formData.imageUrls.length < 1) return setError("You must upload atleast one image")
+      if(+formData.regularPrice < +formData.discountPrice) return setError("Discount price must be lower than regular price")
+      setLoading(true)
+      setError(false)
+      const res = await fetch(`/api/listing/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({...formData,
+          userRef: currentUser._id
+        }),
+      });
+      const data = await res.json();
+      setLoading(false)
+      if (data.success === false) {
+        setError(data.message)
+        return;
+      }
+      navigate(`/listing/${data._id}`)
+    } catch (error) {
+      setError(error.message)
+      setLoading(false)
+    }
   }
   return (
     <div className="create-listing">
@@ -82,92 +150,147 @@ setFormData({
       </div>
       <div className="listing-lower">
         <h1>Create Listing</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form-left">
             <input
               type="text"
               placeholder="Name"
               className="listing-input"
-              id="lname"
+              id="name"
               maxLength="62"
               minLength="10"
               required
+              value={formData.name}
+              onChange={handleChange}
             />
             <textarea
               type="text"
               placeholder="Description..."
               className="listing-textarea"
-              id="ldesc"
+              id="description"
               required
+              onChange={handleChange}
+              value={formData.description}
             />
             <input
               type="text"
               placeholder="Address"
               className="listing-input"
-              id="laddress"
+              id="address"
               name="address"
               maxLength="62"
               minLength="10"
               required
+              onChange={handleChange}
+              value={formData.address}
             />
             <div className="check-box-container">
               <div className="check-box">
-                <input type="checkbox" id="sale" />
+                <input
+                  type="checkbox"
+                  id="sale"
+                  onChange={handleChange}
+                  checked={formData.type === "sale"}
+                />
                 <span>Sell</span>
               </div>
               <div className="check-box">
-                <input type="checkbox" id="rent" />
+                <input
+                  type="checkbox"
+                  id="rent"
+                  onChange={handleChange}
+                  checked={formData.type === "rent"}
+                />
                 <span>Rent</span>
               </div>
               <div className="check-box">
-                <input type="checkbox" id="parking" />
+                <input
+                  type="checkbox"
+                  id="parking"
+                  onChange={handleChange}
+                  checked={formData.parking}
+                />
                 <span>Parking Spot</span>
               </div>
               <div className="check-box">
-                <input type="checkbox" id="furnished" />
+                <input
+                  type="checkbox"
+                  id="furnished"
+                  onChange={handleChange}
+                  checked={formData.furnished}
+                />
                 <span>Furnished</span>
               </div>
               <div className="check-box">
-                <input type="checkbox" id="offer" />
+                <input
+                  type="checkbox"
+                  id="offer"
+                  onChange={handleChange}
+                  checked={formData.offer}
+                />
                 <span>Offer</span>
               </div>
             </div>
 
             <div className="rooms-container">
               <div className="rooms">
-                <input type="number" id="bedrooms" min="1" max="10" required />
+                <input
+                  type="number"
+                  id="bedrooms"
+                  min="1"
+                  max="10"
+                  required
+                  onChange={handleChange}
+                  value={formData.bedrooms}
+                />
                 <p>Beds</p>
               </div>
               <div className="rooms">
-                <input type="number" id="bathrooms" min="1" max="10" required />
+                <input
+                  type="number"
+                  id="bathrooms"
+                  min="1"
+                  max="10"
+                  required
+                  onChange={handleChange}
+                  value={formData.bathrooms}
+                />
                 <p>Baths</p>
               </div>
               <div className="rooms">
                 <input
                   type="number"
-                  id="regularprice"
-                  min="1"
-                  max="10"
+                  id="regularPrice"
+                  min="50"
+                  max="1000000"
                   required
+                  onChange={handleChange}
+                  value={formData.regularPrice}
                 />
                 <div>
                   <p>Regular Price</p>
                   <span>$ / months</span>
                 </div>
               </div>
-              <div className="rooms">
+
+              {formData.offer && (
+                <div className="rooms">
                 <input
                   type="number"
-                  id="discountprice"
-                  min="1"
-                  max="10"
+                  id="discountPrice"
+                  min="0"
+                  max="100000000"
                   required
+                  onChange={handleChange}
+                  value={formData.discountPrice}
                 />
                 <div>
                   <p>Discounted Price</p>
                   <span>$ / months</span>
                 </div>
               </div>
+              )}
+              
             </div>
           </div>
 
@@ -185,7 +308,7 @@ setFormData({
                 onChange={(e) => setImages(e.target.files)}
               />
               <button
-              disabled={uploading}
+                disabled={uploading}
                 type="button"
                 onClick={handleImageSubmit}
                 className="upload-img-btn"
@@ -193,18 +316,19 @@ setFormData({
                 {uploading ? "Uploading" : "Upload"}
               </button>
             </div>
-           
           </div>
           <p>{imageUploadError && imageUploadError}</p>
-          {
-            formData.imageUrls.length > 0 && formData.imageUrls.map((url, index) =>(
+          {formData.imageUrls.length > 0 &&
+            formData.imageUrls.map((url, index) => (
               <div key={url}>
-              <img src={url} alt="imageurl" className="listing-upload-img"/>
-              <button type="button" onClick={() => handleRemoveImage(index)}>Delete</button>
+                <img src={url} alt="imageurl" className="listing-upload-img" />
+                <button type="button" onClick={() => handleRemoveImage(index)}>
+                  Delete
+                </button>
               </div>
-            ))
-          }
-          <button className="create-listing-btn">Create Listing</button>
+            ))}
+          <button disabled={loading || uploading} className="create-listing-btn">{loading ? "Loading" : "Create Listing"}</button>
+          {error && <p>{error}</p>}
         </form>
       </div>
     </div>
