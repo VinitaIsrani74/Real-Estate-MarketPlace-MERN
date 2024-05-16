@@ -45,7 +45,7 @@
 }
 
 .listing-input{
-    width: 25rem;
+    width: 30rem;
     background-color: rgba(219, 232, 241, 0.79);
     padding: 1rem;
     border-radius: 10px;
@@ -53,7 +53,7 @@
     border: none;
 }
 .listing-textarea{
-    width: 25rem;
+    width: 30rem;
     min-height: 5rem;
     background-color: rgba(219, 232, 241, 0.79);
     padding: 1rem;
@@ -66,20 +66,129 @@
 .check-box-container{
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.5rem;
     height: fit-content;
     padding: 10px;
-    
+    font-size: 1.3rem;
 }
-.form-right{
-    padding: 1rem;
-   
+.check-box{
     display: flex;
-    flex-direction: column;
-    flex: 1;
+    align-items: center;
+    gap: 0.2rem;
+}
+.checkbox{
+    width: 2rem;
+    height: 1rem;
+}
+.rooms-container{
+    
+    width: 20rem;
+    display: flex;
+    flex-wrap: wrap;
+    height: fit-content;
+    gap: 1rem;
+}
+.rooms{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.rooms p{
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.rooms span{
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+.room-input{
+    padding: 10px;
+    width: 5rem;
+    height: 3rem;
 }
 
-.listing-upload-img{
-    width: 20rem;
-    height: 20rem;
+/* right side */
+
+.form-right{
+    padding: 1rem;
+     display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 1rem;
 }
+.listing-images-heading{
+color: rgb(39, 2, 8);
+font-size: 1.1rem;
+}
+.listing-images-container{
+    display: flex;
+    box-shadow: 1px 2px 5px rgba(154, 153, 153, 0.279);
+    justify-content: space-between;
+    align-items: center;
+   padding: 10px;
+    font-size: 1.5rem;
+}
+.file-input{
+   
+    font-size: 1.3rem;
+}
+
+.upload-img-btn{
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid green;
+    font-size: 1.2rem;
+    padding: 10px 30px;
+    border-radius: 10px;
+}
+.create-listing-btn{
+    color: aliceblue;
+    padding: 1rem;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    box-shadow: 1px 3px 6px rgb(5, 0, 0);
+    background-color: rgba(34, 140, 24, 0.847);
+    font-size: larger;
+    transition: 1s;
+    cursor: pointer;
+   
+}
+.create-listing-btn:hover{
+    background-color: rgba(27, 107, 20, 0.847);
+}
+.image-delete-btn{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: red;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.uploading-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 1px 2px 5px rgba(154, 153, 153, 0.776);
+    border-radius: 10px;
+    padding: 1rem;
+}
+.listing-upload-img{    
+    object-fit: cover;
+    width: 12rem;
+    height: 6rem;
+}
+.error-msg{
+    color: red;
+}
+
+
+
+
+

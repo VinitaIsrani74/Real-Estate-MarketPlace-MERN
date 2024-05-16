@@ -191,6 +191,7 @@ const navigate = useNavigate()
                   id="sale"
                   onChange={handleChange}
                   checked={formData.type === "sale"}
+                  className="checkbox"
                 />
                 <span>Sell</span>
               </div>
@@ -200,6 +201,7 @@ const navigate = useNavigate()
                   id="rent"
                   onChange={handleChange}
                   checked={formData.type === "rent"}
+                  className="checkbox"
                 />
                 <span>Rent</span>
               </div>
@@ -209,6 +211,7 @@ const navigate = useNavigate()
                   id="parking"
                   onChange={handleChange}
                   checked={formData.parking}
+                  className="checkbox"
                 />
                 <span>Parking Spot</span>
               </div>
@@ -218,6 +221,7 @@ const navigate = useNavigate()
                   id="furnished"
                   onChange={handleChange}
                   checked={formData.furnished}
+                  className="checkbox"
                 />
                 <span>Furnished</span>
               </div>
@@ -227,6 +231,7 @@ const navigate = useNavigate()
                   id="offer"
                   onChange={handleChange}
                   checked={formData.offer}
+                  className="checkbox"
                 />
                 <span>Offer</span>
               </div>
@@ -242,6 +247,7 @@ const navigate = useNavigate()
                   required
                   onChange={handleChange}
                   value={formData.bedrooms}
+                  className="room-input"
                 />
                 <p>Beds</p>
               </div>
@@ -254,6 +260,7 @@ const navigate = useNavigate()
                   required
                   onChange={handleChange}
                   value={formData.bathrooms}
+                  className="room-input"
                 />
                 <p>Baths</p>
               </div>
@@ -266,6 +273,7 @@ const navigate = useNavigate()
                   required
                   onChange={handleChange}
                   value={formData.regularPrice}
+                  className="room-input"
                 />
                 <div>
                   <p>Regular Price</p>
@@ -283,6 +291,7 @@ const navigate = useNavigate()
                   required
                   onChange={handleChange}
                   value={formData.discountPrice}
+                  className="room-input"
                 />
                 <div>
                   <p>Discounted Price</p>
@@ -297,7 +306,7 @@ const navigate = useNavigate()
           <div className="form-right">
             <p className="listing-images-heading">
               Images:
-              <span>The first image will be the cover (max 6)</span>
+              <span> The first image will be the cover (max 6)</span>
             </p>
             <div className="listing-images-container">
               <input
@@ -306,6 +315,7 @@ const navigate = useNavigate()
                 accept="image/*"
                 multiple
                 onChange={(e) => setImages(e.target.files)}
+                className="file-input"
               />
               <button
                 disabled={uploading}
@@ -318,18 +328,18 @@ const navigate = useNavigate()
             </div>
 
 
-            <p>{imageUploadError && imageUploadError}</p>
+            <p className="error-msg">{imageUploadError && imageUploadError}</p>
           {formData.imageUrls.length > 0 &&
             formData.imageUrls.map((url, index) => (
-              <div key={url}>
+              <div key={url} className="uploading-container">
                 <img src={url} alt="imageurl" className="listing-upload-img" />
-                <button type="button" onClick={() => handleRemoveImage(index)}>
+                <button type="button" onClick={() => handleRemoveImage(index)} className="image-delete-btn">
                   Delete
                 </button>
               </div>
             ))}
           <button disabled={loading || uploading} className="create-listing-btn">{loading ? "Loading" : "Create Listing"}</button>
-          {error && <p>{error}</p>}
+          {error && <p className="error-msg">{error}</p>}
           </div>
           
         </form>

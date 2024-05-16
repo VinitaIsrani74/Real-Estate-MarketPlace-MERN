@@ -1,8 +1,9 @@
 .profile-container {
+  padding-top: 5rem;
     width: 100%;
     height: fit-content;
     min-height: 100vh;
-    gap: 2.5rem;
+    gap: 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,7 +15,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;    
+    gap: 0.1rem;    
     width: 40rem;
     border-radius: 20px;    
     height: 38rem;
@@ -27,16 +28,7 @@
     height: fit-content;   
     gap: 1rem;
   }
-  .profile-bg{
-    margin-top: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 13rem;
-    height: 13rem;
-    border-radius: 50%;
-    object-fit: cover;
-  }
+ 
   .profile-img{
     object-fit: cover;
     width: 11rem;
@@ -110,14 +102,69 @@
     transition: 1s;
     cursor: pointer;
   }
-.listing-img{
-  height: 16rem;
-  width: 16rem;
-}
+
+
+/* listing css */
   .show-listing-btn{
     background-color: transparent;
     color: green;
     border: none;
     outline: none;
 cursor: pointer;
+margin-bottom: 1rem;
+  }
+  .listing-img{
+    object-fit: cover;
+    height: 6rem;
+    width: 12rem;
+  }
+  .listing-container{
+    width: 40%;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
+  .list-left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .listing{
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.806);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  }
+
+  .listing-action-btn{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .list-delete-btn, .list-edit-btn{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
+  .list-delete-btn{
+    color: red;
+  }
+  .list-edit-btn{
+    color: green;
+  }
+  .list-title{
+font-size: 1.5rem;
+font-weight: 700;
+color: black;
+  }
+
+  .list-title:hover{
+    text-decoration: underline;
   }

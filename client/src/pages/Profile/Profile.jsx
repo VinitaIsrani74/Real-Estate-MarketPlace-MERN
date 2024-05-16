@@ -257,6 +257,7 @@ try {
           userListings.length > 0 &&
           userListings.map((listing) => (
             <div key={listing._id} className="listing">
+              <div className="list-left">
               <Link
                 style={{ textDecoration: "none" }}
                 to={`/listing/${listing._id}`}
@@ -273,15 +274,17 @@ try {
                 to={`/listing/${listing._id}`}
                 className="show-listing-link"
               >
-                <p>{listing.name}</p>
+                <p className="list-title">{listing.name}</p>
               </Link>
-
+              </div>
+<div className="listing-action-btn">
               <button onClick={() => handleListingDelete(listing._id)} className="list-delete-btn">
                 Delete
               </button>
               <button className="list-edit-btn">
                 Edit
               </button>
+              </div>
             </div>
           ))}
       </div>
