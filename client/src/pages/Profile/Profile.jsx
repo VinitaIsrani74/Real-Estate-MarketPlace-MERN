@@ -281,9 +281,16 @@ try {
               <button onClick={() => handleListingDelete(listing._id)} className="list-delete-btn">
                 Delete
               </button>
+              <Link
+                style={{ textDecoration: "none" }}
+                to={`/update-listing/${listing._id}`}
+                className="show-listing-link"
+              >
               <button className="list-edit-btn">
+
                 Edit
               </button>
+              </Link>
               </div>
             </div>
           ))}

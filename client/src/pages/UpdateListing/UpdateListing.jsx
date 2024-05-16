@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./createListing.css";
+import React, { useEffect, useState } from "react";
+
 import {
   getStorage,
   ref,
@@ -8,8 +8,8 @@ import {
 } from "firebase/storage";
 import { app } from "../../firebase";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-const CreateListing = () => {
+import { useNavigate, useParams } from "react-router-dom";
+const UpdateListing = () => {
   const [images, setImages] = useState([]);
   const [formData, setFormData] = useState({
     imageUrls: [],
@@ -32,6 +32,23 @@ const CreateListing = () => {
   const [loading, setLoading] = useState(false);
 const {currentUser} = useSelector(state => state.user)
 const navigate = useNavigate()
+const params = useParams()
+
+useEffect(() =>{
+const fetchListing = async () =>{
+const listingId = params.listingId;
+const res = await fetch(`/api/listing/get/${listingId}`);
+  const data = await res.json();
+
+  if (data.success === false) {
+    console.log(data.message)
+    return;
+  }
+  setFormData(data)
+}
+fetchListing()
+},[])
+
   const handleImageSubmit = (e) => {
     if (images.length > 0 && images.length + formData.imageUrls.length < 7) {
       setUploading(true);
@@ -117,12 +134,13 @@ const navigate = useNavigate()
 
   const handleSubmit =async (e) =>{
     e.preventDefault();
+    const listingId = params.listingId
     try {
       if(formData.imageUrls.length < 1) return setError("You must upload atleast one image")
       if(+formData.regularPrice < +formData.discountPrice) return setError("Discount price must be lower than regular price")
       setLoading(true)
       setError(false)
-      const res = await fetch(`/api/listing/create`, {
+      const res = await fetch(`/api/listing/update/${listingId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -143,13 +161,14 @@ const navigate = useNavigate()
       setLoading(false)
     }
   }
+
   return (
     <div className="create-listing">
       <div className="listing-upper">
         <div className="listing-overlay"></div>
       </div>
       <div className="listing-lower">
-        <h1>Create Listing</h1>
+        <h1>Update Listing</h1>
         <form onSubmit={handleSubmit} className="form-container">
           <div className="form-left">
             <input
@@ -338,7 +357,7 @@ const navigate = useNavigate()
                 </button>
               </div>
             ))}
-          <button  className="create-listing-btn" disabled={loading || uploading}>{loading ? "Loading" : "Create Listing"}</button>
+          <button className="create-listing-btn" disabled={loading || uploading}>{loading ? "Loading" : "Update Listing"}</button>
           {error && <p className="error-msg">{error}</p>}
           </div>
           
@@ -348,4 +367,4 @@ const navigate = useNavigate()
   );
 };
 
-export default CreateListing;
+export default UpdateListing;
