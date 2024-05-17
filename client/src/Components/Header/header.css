@@ -1,10 +1,10 @@
 .Header {
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
 }
 
 .header-container {
-  background-color: transparent;
+  background-color: rgb(133, 141, 149);
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.511);
   width: 100%;
   
