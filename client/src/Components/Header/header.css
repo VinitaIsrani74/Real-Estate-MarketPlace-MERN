@@ -1,10 +1,10 @@
 .Header {
-  /* position: absolute; */
+  
   width: 100%;
 }
 
 .header-container {
-  background-color: rgb(133, 141, 149);
+  background-color: var(--light);
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.511);
   width: 100%;
   
@@ -17,12 +17,15 @@
 .left-section {
   font-size: 1.5rem;
 }
+.left-section:nth-child(0){
+  color: var(--red);
+}
 .left-section:nth-child(1) {
-  color: rgb(7, 0, 2);
+  color: var(--dark);
 }
 
 .header-form{
-  background-color: rgba(187, 126, 136, 0.674);
+  background-color: var(--dark);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -37,7 +40,7 @@
 }
 .header-input::placeholder{
   font-size: 1.1rem;
-  color: rgb(7, 0, 2);
+  color: var(--light);
 }
 ul {
   display: flex;
@@ -46,10 +49,10 @@ ul {
   list-style: none;
   gap: 1.5rem;
   font-size: 1.3rem;
-  color: rgba(15, 17, 19, 0.959);
+  color: var(--dark);
 }
 ul li {
-    color: rgb(141, 14, 39);
+    color: var(--dark);
   transition: all 3s ease-in;
 }
 ul li:hover {

@@ -10,7 +10,7 @@ const Header = () => {
         <div className="header-container">
             <Link to="/" style={{textDecoration: "none"}}>
             <section className="left-section">
-                <span style={{color: "rgba(112, 128, 144, 0.936)"}}>Property</span>
+                <span style={{color: "var(--red)"}}>Property</span>
                 <span>Pulse</span>
             </section>
             </Link>

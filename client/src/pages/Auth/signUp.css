@@ -28,7 +28,7 @@
 }
 
 .sign-up-input {
-  background-color: rgb(219, 232, 241);
+  background-color: var(--light);
   padding: 1rem;
   border-radius: 10px;
   outline: none;
@@ -43,7 +43,7 @@
   border: none;
   text-transform: uppercase;
   box-shadow: 1px 3px 6px rgb(5, 0, 0);
-  background-color: rgba(142, 100, 107, 0.847);
+  background-color: var(--dark);
   font-size: larger;
   transition: 1s;
   cursor: pointer;

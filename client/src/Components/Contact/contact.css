@@ -1,0 +1,31 @@
+.contact-landlord-container{
+    width: 100%;
+    margin-top: 1rem;
+}
+.contact-textarea{
+    margin-top: 1rem;
+    width: 100%;
+    min-height: 5rem;
+    background-color: var(--light);
+    padding: 1rem;
+    border-radius: 10px;
+    outline: none;
+    resize: vertical;
+    border: 1px solid var(--dark);
+}
+.send-msg-link{
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    color: var(--light);
+    width: 100%;
+    min-height: 3rem;
+    background-color: var(--dark);
+    padding: 1rem;
+    border-radius: 10px;
+    outline: none;
+    resize: vertical;
+    border: 1px solid var(--dark); 
+}

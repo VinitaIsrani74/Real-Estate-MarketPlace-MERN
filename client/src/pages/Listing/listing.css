@@ -1,4 +1,107 @@
-.image-slider{
-    height: 550px;
-    width: 100%;
+.image-slider {
+  height: 550px;
+  width: 100%;
+}
+.list-desc {
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.listing-name {
+  margin-top: 1.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+.listing-address {
+    text-transform: capitalize;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.type-price-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.listing-type,
+.listing-price {
+  width: 10rem;
+  color: aliceblue;
+  padding: 0.6rem;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+  box-shadow: 1px 3px 6px rgb(5, 0, 0);
+  margin-bottom: 1rem;
+  font-size: larger;
+}
+
+.listing-price {
+  background-color: var(--red);
+}
+
+.listing-type {
+  background-color: var(--dark);
+}
+
+.listing-desc{
+    font-size: 1.2rem;
+    text-align: justify;
+    margin-bottom: 1rem;
+   
+}
+.listing-detail{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+.listing-detail li{
+    font-size: 1.1rem;
+    color: green;
+
+}
+.contact-landlord-btn{
+  width: 100%;
+  margin-top: 1rem;
+  color: aliceblue;
+  padding: 1rem;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+  box-shadow: 1px 2px 7px rgb(5, 0, 0);
+  background-color: green;
+  font-size: larger;
+  transition: 1s;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+    .type-price-container{
+flex-direction: column;
+gap: 0rem;
+width: 100%;
+    }
+    
+    .listing-type,
+.listing-price {
+        width: 100%;
+    }
 }

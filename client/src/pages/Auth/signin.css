@@ -1,22 +1,24 @@
 .sign-in-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
   width: 100%;
-  height: 100vh;
-  background: url("../../assets/bg4.jpg") no-repeat center;
-  background-size: cover;
+  min-height: 100vh;
+  height: fit-content;
+ 
 }
 
 .overlay-sign-in {
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  color: rgb(238, 242, 245);
+  height: 15rem;
+  background: url("../../assets/bg5.jpg") no-repeat center;
+  background-size: cover;
+  
 }
-
+.sign-in-heading{
+  margin-top: 1rem;
+}
 .sign-in-form {
   height: fit-content;
   margin: 1rem;
@@ -28,7 +30,7 @@
 }
 
 .sign-in-input {
-  background-color: rgb(219, 232, 241);
+  background-color: var(--light);
   padding: 1rem;
   border-radius: 10px;
   outline: none;
@@ -43,20 +45,20 @@
   border: none;
   text-transform: uppercase;
   box-shadow: 1px 3px 6px rgb(5, 0, 0);
-  background-color: rgba(142, 100, 107, 0.847);
+  background-color: var(--dark);
   font-size: larger;
   transition: 1s;
   cursor: pointer;
 }
 .signin-btn:hover{
-  background-color: rgb(142, 100, 107);
+  background-color: rgba(142, 100, 107, 0.904);
 }
 
 .sign-up-link-div {
   font-size: 1.1rem;
 }
 .sign-up-link {
-  color: rgb(252, 68, 105);
+  color: rgb(249, 4, 4);
 }
 
 @media screen and (max-width: 700px) {

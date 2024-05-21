@@ -1,5 +1,5 @@
 .profile-container {
-  padding-top: 5rem;
+  padding-top: 1rem;
     width: 100%;
     height: fit-content;
     min-height: 100vh;
@@ -46,7 +46,7 @@
     gap: 1rem;
   }
   .profile-input {
-    background-color: rgb(219, 232, 241);
+    background-color: var(--light);
     padding: 1rem;
     border-radius: 10px;
     outline: none;
@@ -61,7 +61,7 @@
     border: none;
     text-transform: uppercase;
     box-shadow: 1px 3px 6px rgb(5, 0, 0);
-    background-color: rgba(142, 100, 107, 0.847);
+    background-color: var(--dark);
     font-size: larger;
     transition: 1s;
     cursor: pointer;
@@ -70,7 +70,7 @@
     background-color: rgb(142, 100, 107);
   }
   .profile-actions{
-    color: rgb(254, 3, 3);
+    color: var(--red);
     font-size: 1.1rem;
     width: 75%;
     display: flex;
@@ -97,7 +97,7 @@
     justify-content: center;
     text-transform: uppercase;
     box-shadow: 1px 3px 6px rgb(5, 0, 0);
-    background-color: rgba(34, 140, 24, 0.847);
+    background-color: var(--red);
     font-size: larger;
     transition: 1s;
     cursor: pointer;
@@ -132,6 +132,7 @@ margin-bottom: 1rem;
     gap: 1rem;
   }
   .listing{
+    background-color: var(--light);
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.806);
     border-radius: 10px;
     display: flex;

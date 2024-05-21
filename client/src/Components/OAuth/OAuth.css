@@ -3,7 +3,7 @@
     border-radius: 10px;
     outline: none;
     border: none;
-    background-color: rgba(226, 43, 80, 0.776);
+    background-color: var(--red);
     font-size: larger;
     text-transform: uppercase;
     color: rgb(254, 253, 250);
