@@ -37,6 +37,8 @@
   background-color: transparent;
   outline: none;
   border: none;
+  color: var(--light);
+  font-size: 1.1rem;
 }
 .header-input::placeholder{
   font-size: 1.1rem;
@@ -59,7 +61,13 @@ ul li:hover {
   cursor: pointer;
   text-decoration: underline;
 }
-
+.search-btn-container{
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.3rem;
+  color: var(--light);
+}
 .avatar{
   border-radius: 50%;
   width: 3rem;
