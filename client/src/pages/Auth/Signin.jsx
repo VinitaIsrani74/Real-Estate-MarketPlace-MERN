@@ -45,8 +45,8 @@ const Signin = () => {
   return (
     <div className="sign-in-container">
       <div className="overlay-sign-in">
-      <div className="listing-overlay"></div>
-      </div>
+     
+      
         <h1 className="sign-in-heading">Sign In</h1>
         <form onSubmit={handleSubmit} className="sign-in-form">
          
@@ -77,7 +77,7 @@ const Signin = () => {
           </Link>
         </div>
         
-     
+        </div>
     </div>
   );
 };
