@@ -25,7 +25,7 @@
 }
 
 .header-form{
-  background-color: var(--dark);
+  background-color: #6b505a2d;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -37,12 +37,12 @@
   background-color: transparent;
   outline: none;
   border: none;
-  color: var(--light);
+  color: var(--dark);
   font-size: 1.1rem;
 }
 .header-input::placeholder{
   font-size: 1.1rem;
-  color: var(--light);
+  color: var(--dark);
 }
 ul {
   display: flex;
@@ -66,7 +66,7 @@ ul li:hover {
   border: none;
   outline: none;
   font-size: 1.3rem;
-  color: var(--light);
+  color: var(--dark);
 }
 .avatar{
   border-radius: 50%;
