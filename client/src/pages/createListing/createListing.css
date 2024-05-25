@@ -188,7 +188,48 @@ font-size: 1.1rem;
     color: red;
 }
 
+@media screen and (max-width: 1100px) {
+    
+.form-container{
+    width: 100%;
+    flex-direction: column;
+}
+.form-left{
+ width: 100%; 
+}
+.listing-input,.listing-textarea, .rooms-container{
+width: 100%;
+}
+.listing-images-container{
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1rem;
+}
+.file-input{
+   width: 100%;
+    font-size: 1.3rem;
+}
 
+.upload-img-btn{
+   width: 70%;
+}
+
+}
+
+
+@media screen and (max-width: 450px){
+    .uploading-container{
+      
+    flex-direction: column;
+    gap: 1rem;
+    }
+    .listing-upload-img{    
+        object-fit: cover;
+        width: 100%;
+        height: 6rem;
+    }
+}
 
 
 

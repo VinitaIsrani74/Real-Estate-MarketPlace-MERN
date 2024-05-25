@@ -110,7 +110,25 @@
   padding: 1rem;
   border-bottom: 3px solid rgba(186, 183, 183, 0.589);
 }
-
+.no-listing-found-para{
+  color: var(--red);
+  font-size: 2rem;
+}
+.loading-para{
+  width: 100%;
+  height: fit-content;
+  text-align: center;
+  color: green;
+  font-size: 2rem;
+}
+.listings-container{
+  height: fit-content;
+ padding: 1rem;
+   min-height: 100vh;
+  display: flex;
+flex-wrap: wrap;
+gap: 2rem;
+}
 @media screen and (max-width: 800px) {
   .search-container {
     flex-direction: column;
@@ -147,4 +165,10 @@
   
 
 
+}
+
+@media screen and (max-width: 700px) {
+  .listings-container{
+   flex-direction: column;
+  }
 }

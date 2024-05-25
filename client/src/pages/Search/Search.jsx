@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./search.css";
+import ListingItem from "../../Components/ListingItem/ListingItem";
 const Search = () => {
   const navigate = useNavigate()
   const [sideBarData, setSideBarData] = useState({
@@ -12,7 +13,7 @@ const Search = () => {
     sort: "created_at",
     order: "desc",
   });
-  const [error, setError] = useState(false);
+  
   const [loading, setLoading] = useState(false);
   const [listings, setListings] = useState([]);
   console.log(listings);
@@ -212,6 +213,15 @@ useEffect(()=>{
 
       <div className="search-right">
         <h1>Listing results:</h1>
+        <div className="listings-container">
+          {!loading && listings.length === 0 &&(
+            <p className="no-listing-found-para">No Listing found!</p>
+          )}
+          {loading &&(
+            <p className="loading-para">Loading...</p>
+          )}
+          {!loading && listings && listings.map((listing) => <ListingItem key={listing._id} listing={listing} />)}
+        </div>
       </div>
     </div>
   );

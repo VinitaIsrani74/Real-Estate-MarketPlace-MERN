@@ -9,6 +9,7 @@ import { FaSquareParking } from "react-icons/fa6";
 import { PiArmchairFill } from "react-icons/pi";
 import { IoLocation } from "react-icons/io5";
 import { Navigation } from "swiper/modules";
+import { Link } from "react-router-dom";
 import "swiper/css/bundle";
 import "./listing.css";
 import Contact from "../../Components/Contact/Contact";
@@ -65,7 +66,13 @@ const Listing = () => {
             ))}
           </Swiper>
           <div className="list-desc">
-            <div className="listing-name">{listing.name}</div>
+            <div className="listing-name">
+              {listing.name}- $
+              {listing.offer
+                ? listing.discountPrice.toLocaleString("en-US")
+                : listing.regularPrice.toLocaleString("en-US")}
+              {listing.type === "rent" && "/month"}
+            </div>
             <div className="listing-address">
               <IoLocation style={{ color: "green" }} />
               {listing.address}
@@ -75,7 +82,9 @@ const Listing = () => {
               <div className="listing-type">For {listing.type}</div>
               <div className="listing-price">
                 {listing.offer ? (
-                  <div>${+listing.regularPrice - +listing.discountPrice}</div>
+                  <div>
+                    ${+listing.regularPrice - +listing.discountPrice} Discount
+                  </div>
                 ) : (
                   listing.regularPrice
                 )}
@@ -115,8 +124,18 @@ const Listing = () => {
               >
                 Contact landlord
               </button>
+            ) }
+            {currentUser && listing.userRef === currentUser._id  && (
+              <Link
+                style={{ textDecoration: "none", width: "100%" }}
+                to={`/update-listing/${listing._id}`}
+              
+              >
+                {" "}
+                <button className="contact-landlord-btn">Update Listing</button>
+              </Link>
             )}
-            {contact && <Contact listing={listing}/>}
+            {contact && <Contact listing={listing} />}
           </div>
         </div>
       )}
