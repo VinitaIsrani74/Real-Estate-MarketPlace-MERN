@@ -33,7 +33,7 @@
 }
 .listing-type,
 .listing-price {
-  width: 10rem;
+ min-width: 10rem;
   color: aliceblue;
   padding: 0.6rem;
   border-radius: 10px;
