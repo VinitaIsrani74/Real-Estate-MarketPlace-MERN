@@ -1,10 +1,11 @@
 .listing-item-container {
   width: 20rem;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   background-color: var(--light);
   height: fit-content;
   object-fit: cover;
+  overflow: hidden;
   box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.806);
 }
 .list-item {

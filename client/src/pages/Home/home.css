@@ -1,0 +1,58 @@
+.home-top {
+  width: 100%;
+  min-height: 70vh;
+  padding: 8rem;
+}
+.home-top-h1 {
+  font-size: 4rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 2rem;
+  text-transform: capitalize;
+}
+.home-top-h1 span {
+  color: var(--mid);
+}
+
+.home-top-p {
+  margin-bottom: 1.5rem;
+  color: black;
+}
+.offer-result{
+   
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+.listing-results-container{
+   
+    width: 100%;
+    height: fit-content;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.listings-results{
+    gap: 1.5rem;
+    width: 100%;
+   margin-top: 2rem;
+    display: flex;
+   height: fit-content;
+    flex-wrap: wrap;
+ align-items: center;
+ justify-content: space-evenly;
+ margin-bottom: 2rem;
+}
+@media screen and (max-width: 750px) {
+  .home-top {
+    min-height: 50vh;
+    padding: 3rem;
+  }
+  .home-top-h1 {
+    width: 100%;
+    font-size: 2rem;
+  }
+}
