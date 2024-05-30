@@ -40,7 +40,7 @@ const SignUp = () => {
       setError(data.message);
     }
   };
-  console.log(formData);
+  
   return (
     <div className="sign-up-container">
       <div className="overlay-sign-up">

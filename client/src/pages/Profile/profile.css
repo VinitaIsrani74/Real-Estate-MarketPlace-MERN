@@ -67,7 +67,7 @@
     cursor: pointer;
   }
   .profile-btn:hover{
-    background-color: rgb(142, 100, 107);
+    background-color: rgba(43, 17, 17, 0.879);
   }
   .profile-actions{
     color: var(--red);
@@ -169,3 +169,71 @@ color: black;
   .list-title:hover{
     text-decoration: underline;
   }
+
+  @media screen and (max-width:1083px) {
+       .right-container{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+        .profile-right{
+        
+          width: 100%;
+         height: fit-content;
+         padding: 5px;
+        }
+        .listing-container{
+          width: 90%;
+          margin-bottom: 1rem;
+          display: flex;
+          gap: 1rem;
+          flex-direction: column;
+        }
+      
+  }
+  @media screen and (max-width:600px) {
+    .profile-actions{
+    
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+     margin-bottom: 2rem;
+    }
+    .listing{
+     flex-direction: column;
+    
+    }
+    .list-left{
+   
+    width: 100%;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      flex-direction: column;
+    }
+    .listing-action-btn{
+      margin-top: 1rem;
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .show-listing-link{
+      width: 100%;
+     
+    }
+    .listing-img{
+     
+      height: 6rem;
+      width: 99%;
+    }
+    .list-title{
+      width: 100%;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+}

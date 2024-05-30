@@ -10,7 +10,7 @@
    
     width: 100%;
     height: 15rem;
-    background: url("../../assets/bg5.jpg") no-repeat center;
+    background: url("../../assets/bg1.jpg.crdownload") no-repeat center;
     background-size: cover;
 }
 .listing-overlay{
@@ -161,7 +161,7 @@ font-size: 1.1rem;
    
 }
 .create-listing-btn:hover{
-    background-color: rgba(27, 107, 20, 0.847);
+    background-color: rgba(43, 17, 17, 0.879);
 }
 .image-delete-btn{
     background-color: transparent;

@@ -25,7 +25,7 @@ const CreateListing = () => {
     parking: false,
     furnished: false,
   });
-  console.log(formData);
+ 
   const [imageUploadError, setImageUploadError] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(false);
@@ -71,7 +71,7 @@ const navigate = useNavigate()
         (snapshot) => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log(Math.round(progress));
+         
         },
         (error) => {
           reject(error);

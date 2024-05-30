@@ -26,7 +26,7 @@ useEffect(()=>{
   return (
     <div className='Header'>
         <div className="header-container">
-            <Link to="/" style={{textDecoration: "none"}}>
+            <Link to="/" style={{textDecoration: "none"}} className='name-link'>
             <section className="left-section">
                 <span style={{color: "var(--red)"}}>Property</span>
                 <span>Pulse</span>
@@ -43,7 +43,7 @@ useEffect(()=>{
             <Link to="/" style={{textDecoration: "none"}}><li className='list1'>Home</li></Link>
             <Link to="/about" style={{textDecoration: "none"}}> <li className='list2'>About</li></Link>
             <Link to="/profile" style={{textDecoration: "none"}}>
-              {currentUser? <img src={currentUser.avatar} alt="avatar" className='avatar'/> :  <li>Sign in</li>}
+              {currentUser? <img src={currentUser.avatar} alt="avatar" className='avatar'/> :  <li className='avatar-sign-in'>Sign in</li>}
               </Link>
             </ul>
         </div>

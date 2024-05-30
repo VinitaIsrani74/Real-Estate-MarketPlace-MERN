@@ -1,7 +1,7 @@
 .about-container{
     width: 100%;
   min-height: 100vh;
-  background: url("../../assets/bg1.jpg") no-repeat center;
+  background: url("../../assets/bg.jpg") no-repeat center;
   background-size: cover;
 }
 

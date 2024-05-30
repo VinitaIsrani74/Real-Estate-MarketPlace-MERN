@@ -33,12 +33,13 @@
   border-radius: 10px;
 }
 .header-input {
-  background-color: transparent;
+
+  background-color: #6b505a00;
   outline: none;
   border: none;
   color: var(--dark);
   font-size: 1.1rem;
-  width: 90%;
+  width: 80%;
 }
 .header-input::placeholder {
   font-size: 1.1rem;
@@ -68,7 +69,9 @@ ul li:hover {
   font-size: 1.3rem;
   color: var(--dark);
 }
+
 .avatar {
+  
   border-radius: 50%;
   width: 3rem;
   height: 3rem;
@@ -76,41 +79,22 @@ ul li:hover {
 }
 
 @media screen and (max-width: 500px) {
-  .header-container {
+ .header-container{
+ gap: 10%;
+padding: 0rem;
+ flex-wrap: wrap;
+ }
+.name-link{
+  display: none;
+}
+.header-form{
+  min-width: 70%;
+}
+ul{
+  gap: 0rem;
  
-    width: 100%;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .avatar {
-    
-    width: 6rem;
-    height: 6rem;
-   
-  }
-  
-  .list1,
-  .list2 {
-    display: none;
-  }
-  .left-section span{
-    font-size: 2rem;
-  }
-  .header-form {
-    min-width: 100%;
-  
-    font-size: 0.3rem;
- 
-    padding: 1rem;
-    border-radius: 10px;
-  }
-  .header-input {
-    width: 100%;
-    font-size: 0.9rem;
-  }
-  ul {
-    font-size: 1rem;
-  }
+}
+
 }
 
 @media screen and (max-width: 786px) {

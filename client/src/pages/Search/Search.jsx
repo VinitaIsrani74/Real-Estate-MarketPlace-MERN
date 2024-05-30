@@ -17,7 +17,7 @@ const Search = () => {
   const [loading, setLoading] = useState(false);
   const [listings, setListings] = useState([]);
   const [showMore, setShowMore] = useState(false);
-  console.log(listings);
+ 
 useEffect(()=>{
   const urlParams = new URLSearchParams(location.search)
   const searchTermFromUrl = urlParams.get('searchTerm')
@@ -245,7 +245,7 @@ useEffect(()=>{
           {!loading && listings && listings.map((listing) => <ListingItem key={listing._id} listing={listing} />)}
         </div>
         {showMore && (
-          <button onClick={onShowMoreClick}>
+          <button onClick={onShowMoreClick} className="show-more-btn">
             Show More
           </button>
         )}

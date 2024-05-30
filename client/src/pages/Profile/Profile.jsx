@@ -34,7 +34,7 @@ const Profile = () => {
   const [userListings, setUserListings] = useState([]);
   const dispatch = useDispatch();
 
-  console.log(formData);
+ 
   useEffect(() => {
     if (file) {
       handleFileUpload(file);
@@ -134,7 +134,7 @@ const Profile = () => {
       setShowListingsError(false);
       const res = await fetch(`/api/user/listings/${currentUser._id}`);
       const data = await res.json();
-      console.log(data);
+     
       if (data.success === false) {
         setShowListingsError(true);
         return;
@@ -284,7 +284,7 @@ try {
               <Link
                 style={{ textDecoration: "none" }}
                 to={`/update-listing/${listing._id}`}
-                className="show-listing-link"
+                className="show-edit-link"
               >
               <button className="list-edit-btn">
 
